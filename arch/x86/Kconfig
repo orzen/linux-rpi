@@ -93,6 +93,7 @@ config X86
 	select ARCH_HAS_NMI_SAFE_THIS_CPU_OPS
 	select ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE
 	select ARCH_HAS_PMEM_API		if X86_64
+	select ARCH_HAS_PREEMPT_LAZY
 	select ARCH_HAS_PTE_DEVMAP		if X86_64
 	select ARCH_HAS_PTE_SPECIAL
 	select ARCH_HAS_HW_PTE_YOUNG
@@ -2989,6 +2990,12 @@ config ISA_DMA_API
 	help
 	  Enables ISA-style DMA support for devices requiring such controllers.
 	  If unsure, say Y.
+
+config QEMUX86
+	bool "Enable for qemumx86 specific configurations"
+	default n
+	select PCI_MSI_ARCH_FALLBACKS if PCI_MSI
+
 
 if X86_32
 
